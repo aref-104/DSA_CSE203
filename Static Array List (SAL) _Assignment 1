@@ -1,0 +1,109 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    //printf("Max size of SAL is set to 10\n");
+    int choice;
+    int a[10] = {0},l=0,i;
+    while(1)
+    {
+        printf("Max size of SAL is set to 10\n");
+        printf("\nMenu\n");
+        printf("1.  Insert New Element in the array:\n");
+        printf("2.  Delete element from the array:\n");
+        printf("3.  Search any element:\n");
+        printf("4.  Print The array:\n");
+        printf("5.  Exit\n");
+        printf("Enter Choice: ");
+        scanf("%d",&choice);
+
+        if(choice==5) break;
+
+        switch(choice)
+        {
+                case 1:
+                {
+                    ///Insert an Element on array!
+                    int n,p;
+                    cout<<"\nEnter a element to insert : ";
+                    cin>>n;
+                    cout<<"\nEnter index position to insert (Current Array lenght is : "<<l<<" ,So choose an index between 0 to "<<l<<" ):";
+                    cin>>p;
+                    if(p==l&&p==10) cout<<"Sorry Array is Full !\n";
+                    if(p>l)
+                    {
+                        cout<<"\nIncorrect positional value. The value can not be inserted."<<'\n';
+                    }
+                    else {
+                        for(i=l;i>=p;i--)
+                        {
+                            a[i+1] = a[i];
+                        }
+                        a[p] = n;
+                        l++;
+                        cout<<"\n"<<n<<" is inserted at index "<<p<<'\n';
+                        cout<<"\nThe Current Array list is : ";
+                        for(i=0;i<l;i++) cout<<a[i]<<" ";
+                        cout<<"\n\n";
+                    }
+                    break;
+                }
+
+                case 2:
+                    {
+                        int q;
+                        cout<<"\nThe Current Array list is : ";
+                        for(i=0;i<l;i++) cout<<a[i]<<" ";
+                        cout<<"\n\n";
+                        cout<<"Enter index to delete from: ";
+                        cin>>q;
+                        if(l==0) cout<<"\nThe Array List is currently empty! \n";
+                        else if(q>=l) cout<<"\nIncorrect position value\n\n";
+                        else{
+                            for(i=q;i<l;i++)
+                            {
+                                a[i] = a[i+1];
+                            }
+                            l--;
+                            cout<<"\nDeleted from position "<<q<<'\n';
+                        }
+                        cout<<"\nThe Current Array Lists is : ";
+                        for(i=0;i<l;i++) cout<<a[i]<<" ";
+                        cout<<"\n\n";
+                        break;
+                    }
+
+
+                case 3:
+                {
+                    ///Search An Element
+                    int e,flag = 0;
+                    cout<<"\nEnter the Search Key : ";
+                    cin>>e;
+                    for(i=0;i<l;i++)
+                    {
+                        if(e==a[i])
+                        {
+                            flag  = 1;
+                            break;
+                        }
+                    }
+                    if(flag==1) cout<<"\nThe search key "<<e<<" is at index "<<i<<"\n\n";
+                    else cout<<"\nThe search key is not in the array\n\n";
+                    break;
+                }
+                case 4:
+                    {
+                        cout<<"\nThe Current Array list is : ";
+                        for(i=0;i<l;i++) cout<<a[i]<<" ";
+                        cout<<"\n\n";
+                        break;
+                    }
+                    default: printf("\nWrong input.\n\n");
+        }
+    }
+    return 0;
+}
+///rf_104
